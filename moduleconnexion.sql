@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 08 juin 2023 à 12:35
+-- Généré le : jeu. 08 juin 2023 à 12:59
 -- Version du serveur : 10.10.2-MariaDB
 -- Version de PHP : 8.0.26
 
@@ -35,7 +35,14 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `nom` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+--
+-- Déchargement des données de la table `utilisateurs`
+--
+
+INSERT INTO `utilisateurs` (`id`, `login`, `prenom`, `nom`, `password`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
