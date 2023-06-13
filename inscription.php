@@ -69,7 +69,7 @@
                             <label for="pword">Mot de passe :</label>
                         </td>
                         <td>
-                            <input type="password" name="password" id="pword" maxlength="20">
+                            <input type="password" name="password" id="pword">
                             <!-- <br> -->
                         </td>
                     </tr>
@@ -78,7 +78,7 @@
                             <label for="pword">M.D.P. Confirmation :</label>
                         </td>
                         <td>
-                            <input type="password" name="conf_password" id="pword" maxlength="20">
+                            <input type="password" name="conf_password" id="pword">
                             <!-- <br> -->
                         </td>
                     </tr>
@@ -108,16 +108,17 @@
             $password=$idcom->quote($_POST['password']);
             $conf_password=$idcom->quote($_POST['conf_password']);
             // Teste si les mots de passe sont identiques
-            if ($password!=$conf_password)
+            if ($password != $conf_password)
             {
                 echo "<script type=\"text/javascript\">
-                alert('Erreur dans la confirmation du mot de passe')</script>";
+                alert('Erreur mot de passe')</script>";
 
             }
             else
             {
                 // Requête SQL
-                $requete3="INSERT INTO utilisateurs VALUES($id_utilisateurs, $login, $prenom, $nom, $password)";
+                $password_hash=getPasswordHash($password);
+                $requete3="INSERT INTO utilisateurs VALUES($id_utilisateurs, $login, $prenom, $nom, '$password_hash')";
                 $nblignes=$idcom->exec($requete3);
 
                 if ($nblignes!=1)
