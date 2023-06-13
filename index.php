@@ -18,6 +18,17 @@
             <input type="submit" value="Connexion">
         </form>
 
+        <?php
+        include_once("./includes/functions.php");
+        $pass="Azerty2@";
+        $passhash=getPasswordHash($pass);
+            echo $pass. " correspond à ". $passhash."<br>";
+
+        $pass2="Azerty2@";
+        echo $pass2. " correspond à ". isPasshashAndPassMatch($pass, $passhash);
+        ?>
+
+
     </main>
     <footer>
 
