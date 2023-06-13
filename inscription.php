@@ -21,16 +21,31 @@
             <legend>Formulaire d'inscription</legend>
             
             <label for="prenom">Prénom :</label>
-            <input type="text" name="prenom" id="prenom" pattern="^[a-zA-Z]{1,10}$" maxlength="15"><br>
+            <input  type="text" 
+                    name="prenom"
+                    id="prenom"
+                    pattern="^[a-zA-Z]{3,15}$"
+                    maxlength="15" 
+                    value="<?php if(isset($_POST["prenom"])) echo $_POST["prenom"]?>"/><br>
             
             <label for="nom">Nom :</label>
-            <input type="text" name="nom" id="nom"><br>
+            <input  type="text"
+                    name="nom" 
+                    id="nom" 
+                    pattern="^[a-zA-Z]{3,15}$" 
+                    maxlength="15" 
+                    value="<?php if(isset($_POST["nom"])) echo $_POST["nom"]?>"/><br>
             
             <label for="login">Log In :</label>
-            <input type="text" name="login" id="login"><br>
+            <input  type="text"
+                    name="login"
+                    id="login"
+                    pattern="^[a-zA-Z]{3,15}$"
+                    maxlength="15"
+                    value="<?php if(isset($_POST["login"])) echo $_POST["login"]?>"/><br>
             
             <label for="pword">Mot de passe :</label>
-            <input type="password" name="password" id="pword" maxlength="5"><br>
+            <input type="password" name="password" id="pword" maxlength="15" ><br>
             
             <!-- <label for="c_pword">Confirmation m.d.p :</label>
             <input type="password" name="c_password" id="c_pword"><br> -->
