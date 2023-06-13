@@ -69,7 +69,16 @@
                             <label for="pword">Mot de passe :</label>
                         </td>
                         <td>
-                            <input type="password" name="password" id="pword" maxlength="15">
+                            <input type="password" name="password" id="pword" maxlength="20">
+                            <!-- <br> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="pword">M.D.P. Confirmation :</label>
+                        </td>
+                        <td>
+                            <input type="password" name="conf_password" id="pword" maxlength="20">
                             <!-- <br> -->
                         </td>
                     </tr>
@@ -97,23 +106,35 @@
             $nom=$idcom->quote($_POST['nom']);
             $login=$idcom->quote($_POST['login']);
             $password=$idcom->quote($_POST['password']);
-            // Requête SQL
-            $requete3="INSERT INTO utilisateurs VALUES($id_utilisateurs, $login, $prenom, $nom, $password)";
-            $nblignes=$idcom->exec($requete3);
-            if ($nblignes!=1)
+            $conf_password=$idcom->quote($_POST['conf_password']);
+            // Teste si les mots de passe sont identiques
+            if ($password!=$conf_password)
             {
+                echo "<script type=\"text/javascript\">
+                alert('Erreur dans la confirmation du mot de passe')</script>";
+
+            }
+            else
+            {
+                // Requête SQL
+                $requete3="INSERT INTO utilisateurs VALUES($id_utilisateurs, $login, $prenom, $nom, $password)";
+                $nblignes=$idcom->exec($requete3);
+
+                if ($nblignes!=1)
+                {
                 $mess_erreur=$idcom->errorInfo();
                 echo "Insertion impossible, code", $idcom->errorCode(),$mess_erreur[2];
                 echo "<script type=\"text/javascript\">
                 alert('Erreur : ".$idcom->errorCode()."')</script>";
-            }
-            else
-            {
-                echo "<script type=\"text/javascript\">
-                alert('Vous êtes enregistré. Votre id est le : ".$idcom->lastInsertId()."')</script>";
-            $idcom=NULL;
-            }
-            
+                }
+                else
+                {
+                    echo "<script type=\"text/javascript\">
+                    alert('Vous êtes enregistré. Votre id est le : ".$idcom->lastInsertId()."')</script>";
+                $idcom=NULL;
+                }
+            $idcom=NULL;    
+            }  
         }
         else
         {
