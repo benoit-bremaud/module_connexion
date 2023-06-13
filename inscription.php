@@ -19,40 +19,68 @@
     <form action="<?php $_SERVER["PHP_SELF"] ?>" method="post" enctype="application/x-www-form-urlencoded">
             <fieldset> 
             <legend>Formulaire d'inscription</legend>
-            
-            <label for="prenom">Prénom :</label>
-            <input  type="text" 
-                    name="prenom"
-                    id="prenom"
-                    pattern="^[a-zA-Z]{3,15}$"
-                    maxlength="15" 
-                    value="<?php if(isset($_POST["prenom"])) echo $_POST["prenom"]?>"/><br>
-            
-            <label for="nom">Nom :</label>
-            <input  type="text"
-                    name="nom" 
-                    id="nom" 
-                    pattern="^[a-zA-Z]{3,15}$" 
-                    maxlength="15" 
-                    value="<?php if(isset($_POST["nom"])) echo $_POST["nom"]?>"/><br>
-            
-            <label for="login">Log In :</label>
-            <input  type="text"
-                    name="login"
-                    id="login"
-                    pattern="^[a-zA-Z]{3,15}$"
-                    maxlength="15"
-                    value="<?php if(isset($_POST["login"])) echo $_POST["login"]?>"/><br>
-            
-            <label for="pword">Mot de passe :</label>
-            <input type="password" name="password" id="pword" maxlength="15" ><br>
-            
+            <table>
+                <tr>
+                    <td>
+                        <label for="prenom">Prénom :</label>
+                    </td>
+                    <td>
+                        <input  type="text"
+                                name="prenom"
+                                id="prenom"
+                                pattern="^[a-zA-Z]{3,15}$"
+                                maxlength="15"
+                                value="<?php if(isset($_POST["prenom"])) echo $_POST["prenom"]?>"/> <!-- maintien état formulaire -->
+                                <!-- <br> -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="nom">Nom :</label>
+                    </td>
+                    <td>
+                        <input  type="text"
+                                name="nom" 
+                                id="nom" 
+                                pattern="^[a-zA-Z]{3,15}$" 
+                                maxlength="15" 
+                                value="<?php if(isset($_POST["nom"])) echo $_POST["nom"]?>"/> <!-- maintien état formulaire -->
+                                <!-- <br> -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="login">Log In :</label>
+                    </td>
+                    <td>                
+                        <input  type="text"
+                                name="login"
+                                id="login"
+                                pattern="^[a-zA-Z]{3,15}$"
+                                maxlength="15"
+                                value="<?php if(isset($_POST["login"])) echo $_POST["login"]?>"/>  <!-- maintien état formulaire -->
+                                <!-- <br> -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="pword">Mot de passe :</label>
+                    </td>
+                    <td>
+                        <input  type="password"
+                                name="password"
+                                id="pword"
+                                maxlength="15" >
+                                <!-- <br> -->
+                    </td>
+                </tr>
+                    
             <!-- <label for="c_pword">Confirmation m.d.p :</label>
             <input type="password" name="c_password" id="c_pword"><br> -->
-
-            <input type="reset" value="Effacer"><br>
-            <input type="submit" value="Inscription"><br>
-    
+            </table>
+            <br>
+                <input type="reset" value="Effacer">&nbsp;&nbsp;&nbsp; <!-- espace insécable &nbsp;-->
+                <input type="submit" value="Inscription">    
             </fieldset>
         </form>
         <?php
